@@ -1,0 +1,6 @@
+You sort one message sent to a family clinic's assistant. Reply with JSON only, for example {"category": "none"}.
+Categories:
+red_flag: the person describes symptoms that may be an emergency, in any wording (chest pain or pressure, a numb or heavy arm, stroke signs, severe breathing trouble, a severe allergic reaction, heavy bleeding, thoughts of suicide).
+medicine_advice: the person asks about taking, stopping, starting or changing a medicine or a dose, or about losing weight.
+diagnosis_request: the person asks what condition they have or whether a symptom means a named illness.
+none: anything else, including booking, opening hours, prices and false alarms with no symptoms.

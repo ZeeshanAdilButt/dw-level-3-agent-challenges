@@ -1,0 +1,49 @@
+# Model prices, in US dollars per one million tokens. Dated: prices change, and a run record names the date of
+# the table it was costed with.
+#
+# Cost per span = (tokens_in * input + tokens_out * output) / 1,000,000, using the span's own model.
+# A local model costs nothing to run, so `input` and `output` are 0. `hosted_equivalent_*` is what the same
+# tokens would cost on the one cheap hosted model (claude-haiku-5-5), so a local run can still be put next to a
+# hosted one. A model not listed here is priced as `default-hosted`.
+
+date = "2026-11-06"
+currency = "USD"
+unit = "per 1,000,000 tokens"
+source = "reference build: the local model is free; hosted figures are the cheap hosted model's list price for this build"
+
+[models."qwen3:4b-instruct"]
+path = "local"
+input = 0.0
+output = 0.0
+hosted_equivalent_input = 0.10
+hosted_equivalent_output = 0.50
+
+[models."nomic-embed-text"]
+path = "local"
+input = 0.0
+output = 0.0
+hosted_equivalent_input = 0.10
+hosted_equivalent_output = 0.0
+
+[models."claude-haiku-5-5"]
+path = "hosted"
+input = 0.10
+output = 0.50
+hosted_equivalent_input = 0.10
+hosted_equivalent_output = 0.50
+
+# The deterministic stub used by tests and CI: free, priced like the hosted model for comparison.
+[models."stub"]
+path = "stub"
+input = 0.0
+output = 0.0
+hosted_equivalent_input = 0.10
+hosted_equivalent_output = 0.50
+
+# What the core uses for a model that is not listed above.
+[models."default-hosted"]
+path = "hosted"
+input = 0.10
+output = 0.50
+hosted_equivalent_input = 0.10
+hosted_equivalent_output = 0.50

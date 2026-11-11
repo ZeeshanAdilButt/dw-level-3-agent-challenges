@@ -1,0 +1,60 @@
+# Settings for the agent. One section per lab; the loader flattens every section into one dict.
+# `python -m harness keep` and `python -m harness revert` rewrite this file, so keep one `key = value`
+# per line and leave the section headers where they are.
+#
+# A run reads these values, applies the --parent run's settings, then any --set key=value.
+
+[lab1]
+# The company the agent works for: quillon, juniper or saltmarsh (see config/ids.yaml).
+pack = "quillon"
+# local = Ollama on this machine, hosted = the cheap hosted model, stub = deterministic replies for tests and CI.
+model_path = "local"
+model = "qwen3:4b-instruct"
+# The model name used when model_path is hosted (see config/prices.toml). Empty means none chosen yet.
+hosted_model = ""
+embed_model = "nomic-embed-text"
+temperature = 0.2
+# How many ranked chunks the retriever returns.
+top_k = 5
+
+[lab2]
+# fixed = cut every chunk_size tokens, heading = cut at headings.
+chunker = "fixed"
+chunk_size = 400
+# Tokens shared with the previous chunk. Must satisfy 0 <= overlap < chunk_size.
+overlap = 0
+
+[lab3]
+# bm25, trigram, vector or hybrid.
+retriever = "bm25"
+
+[lab4]
+# none, neighbours, section_parent or link_hop.
+context = "none"
+neighbours_n = 1
+# One global budget for the whole delivered text.
+context_token_limit = 3000
+# off or on: newer wins only inside one version chain and owner scope, else authority order, else hand off.
+authority_rule = "off"
+
+[lab5]
+# off or on.
+tools = "off"
+rules = "off"
+
+[lab6]
+# single, router_specialists or router_specialists_reviewer.
+topology = "single"
+
+[lab7]
+# Any of: "access", "marking", "output_check".
+defences = []
+
+[lab8]
+# off or on: record one span per step inside the agent.
+trace_steps = "off"
+
+[clinic]
+# Juniper Lane Clinic only. With no region the agent says "call your local emergency number".
+region = "Port Avery"
+emergency_number = "112"

@@ -1,0 +1,123 @@
+{
+ "run_id": "r000",
+ "kind": "run",
+ "label": "sample record shipped with part 3",
+ "status": "complete",
+ "pack": "quillon",
+ "parent": null,
+ "from_run": null,
+ "change": null,
+ "explicit_sets": [],
+ "settings": {
+  "pack": "quillon",
+  "model_path": "local",
+  "model": "qwen3:4b-instruct",
+  "hosted_model": "",
+  "embed_model": "nomic-embed-text",
+  "temperature": 0.2,
+  "top_k": 5,
+  "chunker": "fixed",
+  "chunk_size": 400,
+  "overlap": 0,
+  "retriever": "bm25",
+  "context": "none",
+  "neighbours_n": 1,
+  "context_token_limit": 3000,
+  "authority_rule": "off",
+  "tools": "off",
+  "rules": "off",
+  "topology": "single",
+  "defences": [],
+  "trace_steps": "off",
+  "region": "Port Avery",
+  "emergency_number": "112"
+ },
+ "manifest": {
+  "code": {
+   "commit": "42437901c321a14fc9dd8433d4130330e7605d2a",
+   "tree": "ac4cdd34c842df844fbf291470331184417e7863",
+   "content_hash": "065fef5b568f8f5b"
+  },
+  "prompts": "d299f47b2898058d",
+  "corpus_hash": "a13eb5324f5af46b",
+  "index_settings": {
+   "chunker": "fixed",
+   "chunk_size": 400,
+   "overlap": 0,
+   "retriever": "bm25",
+   "embed_model": "nomic-embed-text"
+  },
+  "embed_model_digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "model": {
+   "path": "local",
+   "name": "qwen3:4b-instruct",
+   "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "tool_fixtures": "122d4ba24fa3b43e",
+  "grader_version": "graders-1.0.0",
+  "question_set_version": "04048ed40794",
+  "fingerprint": "c2f5c474acc2b933"
+ },
+ "prediction_commit": null,
+ "prediction_committed_at": null,
+ "cache_mode": "off",
+ "model_path": "local",
+ "snapshot": ".cache/snapshots/r000",
+ "eligibility": "retrieval_only",
+ "flags": {
+  "multi_change": false,
+  "smoke": true,
+  "slice": null,
+  "repeat_index": 1,
+  "repeat": 1,
+  "url": null
+ },
+ "started_at": "2026-11-08T17:01:21.989+00:00",
+ "grader_version": "graders-1.0.0",
+ "ended_at": "2026-11-08T17:04:36.444+00:00",
+ "seconds": 192.3,
+ "metrics": {
+  "answer_success": {
+   "value": 0.56,
+   "num": 14.0,
+   "den": 25,
+   "n": 25,
+   "display": "56.0%"
+  },
+  "cited_correctly": {
+   "value": 0.76,
+   "num": 19.0,
+   "den": 25,
+   "n": 25,
+   "display": "76.0%"
+  },
+  "recall5": {
+   "value": 0.88,
+   "num": 22.0,
+   "den": 25,
+   "n": 25,
+   "display": "88.0%"
+  }
+ },
+ "fingerprint": "c2f5c474acc2b933",
+ "totals": {
+  "answer_success": {
+   "value": 0.56,
+   "n": 25,
+   "num": 14.0,
+   "den": 25
+  },
+  "cited_correctly": {
+   "value": 0.76,
+   "n": 25,
+   "num": 19.0,
+   "den": 25
+  },
+  "recall5": {
+   "value": 0.88,
+   "n": 25,
+   "num": 22.0,
+   "den": 25
+  }
+ }
+}

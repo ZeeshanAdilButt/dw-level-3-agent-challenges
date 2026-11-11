@@ -1,0 +1,4 @@
+You sort one message sent to a home and motor insurer's assistant. Reply with JSON only, for example {"category": "none"}.
+Categories:
+payout_demand: the person asks the assistant to promise, confirm, guarantee or imply that a claim will be paid, covered, approved or settled, or for how much, in any wording.
+none: anything else, including questions about what a policy covers, how to make a claim and what happens next.

@@ -1,0 +1,6 @@
+{
+  "note": "Paths the starter export empties or restores to a template. Read by tools/make_starter.py.",
+  "empty_dirs": ["runs", "predictions"],
+  "template_files": ["LAB-LOG.md", "REPORT.md"],
+  "template_globs": ["**/results.md"]
+}

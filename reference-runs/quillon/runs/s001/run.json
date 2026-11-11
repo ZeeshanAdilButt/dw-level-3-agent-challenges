@@ -1,0 +1,219 @@
+{
+ "run_id": "s001",
+ "kind": "screen",
+ "label": "l2.screen.fixed200",
+ "started_at": "2026-11-09T08:55:54.523+00:00",
+ "ended_at": "2026-11-09T08:55:56.935+00:00",
+ "parent": "r001",
+ "change": {
+  "chunk_size": [
+   400,
+   200
+  ]
+ },
+ "explicit_sets": [
+  "chunk_size",
+  "chunker",
+  "overlap"
+ ],
+ "settings": {
+  "pack": "quillon",
+  "model_path": "local",
+  "model": "qwen3:4b-instruct",
+  "hosted_model": "",
+  "embed_model": "nomic-embed-text",
+  "temperature": 0.2,
+  "top_k": 5,
+  "chunker": "fixed",
+  "chunk_size": 200,
+  "overlap": 0,
+  "retriever": "bm25",
+  "context": "none",
+  "neighbours_n": 1,
+  "context_token_limit": 3000,
+  "authority_rule": "off",
+  "tools": "off",
+  "rules": "off",
+  "topology": "single",
+  "defences": [],
+  "trace_steps": "off",
+  "region": "Port Avery",
+  "emergency_number": "112"
+ },
+ "manifest": {
+  "code": {
+   "commit": "4945b40b85f05f21e1a5de98d2a4705919b13963",
+   "tree": "55fff16a247e7ec78d8b4fd2d8a571a30db0f239",
+   "content_hash": "334b217be47586b6"
+  },
+  "prompts": "1b0088dc05c9a46b",
+  "corpus_hash": "064ea7da1013a923",
+  "index_settings": {
+   "chunker": "fixed",
+   "chunk_size": 200,
+   "overlap": 0,
+   "retriever": "bm25",
+   "embed_model": "nomic-embed-text"
+  },
+  "embed_model_digest": null,
+  "model": {
+   "path": "local",
+   "name": "qwen3:4b-instruct",
+   "digest": null
+  },
+  "tool_fixtures": "122d4ba24fa3b43e",
+  "grader_version": "graders-1.0.0",
+  "question_set_version": "04048ed40794",
+  "fingerprint": "e13439ee3eeec0e9"
+ },
+ "prediction_commit": null,
+ "prediction_committed_at": null,
+ "grader_version": "graders-1.0.0",
+ "retrieval_path": "agent",
+ "chunks": 550,
+ "embedding": null,
+ "fingerprint": "e13439ee3eeec0e9",
+ "config": {
+  "pack": "quillon",
+  "chunker": "fixed",
+  "chunk_size": 200,
+  "overlap": 0,
+  "retriever": "bm25",
+  "top_k": 5
+ },
+ "overall": {
+  "n": 62,
+  "recall3": 0.589,
+  "recall5": 0.685,
+  "mrr": 0.433,
+  "mrr_doc": 0.571,
+  "span_coverage": 0.512,
+  "spans": 80,
+  "context_fact_recall": 0.474,
+  "facts": 78,
+  "forms_recall": 0.71,
+  "context_tokens": 956
+ },
+ "slices": {
+  "code": {
+   "n": 8,
+   "recall3": 1.0,
+   "recall5": 1.0,
+   "mrr": 0.75,
+   "mrr_doc": 0.875,
+   "span_coverage": 0.875,
+   "spans": 8,
+   "context_fact_recall": 0.875,
+   "facts": 8,
+   "forms_recall": 1.0,
+   "context_tokens": 958
+  },
+  "conflict": {
+   "n": 8,
+   "recall3": 0.375,
+   "recall5": 0.75,
+   "mrr": 0.292,
+   "mrr_doc": 0.385,
+   "span_coverage": 0.625,
+   "spans": 8,
+   "context_fact_recall": 0.375,
+   "facts": 8,
+   "forms_recall": 0.75,
+   "context_tokens": 941
+  },
+  "cross-area": {
+   "n": 10,
+   "recall3": 0.75,
+   "recall5": 0.8,
+   "mrr": 0.675,
+   "mrr_doc": 0.9,
+   "span_coverage": 0.591,
+   "spans": 22,
+   "context_fact_recall": 0.45,
+   "facts": 20,
+   "forms_recall": 0.8,
+   "context_tokens": 953
+  },
+  "far-from-heading": {
+   "n": 8,
+   "recall3": 0.75,
+   "recall5": 0.75,
+   "mrr": 0.438,
+   "mrr_doc": 0.625,
+   "span_coverage": 0.5,
+   "spans": 8,
+   "context_fact_recall": 0.5,
+   "facts": 8,
+   "forms_recall": 0.625,
+   "context_tokens": 962
+  },
+  "linked-doc": {
+   "n": 10,
+   "recall3": 0.6,
+   "recall5": 0.65,
+   "mrr": 0.6,
+   "mrr_doc": 0.7,
+   "span_coverage": 0.409,
+   "spans": 22,
+   "context_fact_recall": 0.4,
+   "facts": 20,
+   "forms_recall": 0.65,
+   "context_tokens": 980
+  },
+  "paraphrase": {
+   "n": 10,
+   "recall3": 0.1,
+   "recall5": 0.3,
+   "mrr": 0.025,
+   "mrr_doc": 0.083,
+   "span_coverage": 0.1,
+   "spans": 10,
+   "context_fact_recall": 0.2,
+   "facts": 10,
+   "forms_recall": 0.3,
+   "context_tokens": 953
+  },
+  "single-doc": {
+   "n": 21,
+   "recall3": 0.476,
+   "recall5": 0.524,
+   "mrr": 0.345,
+   "mrr_doc": 0.409,
+   "span_coverage": 0.429,
+   "spans": 21,
+   "context_fact_recall": 0.524,
+   "facts": 21,
+   "forms_recall": 0.667,
+   "context_tokens": 955
+  },
+  "table": {
+   "n": 9,
+   "recall3": 0.778,
+   "recall5": 0.889,
+   "mrr": 0.556,
+   "mrr_doc": 0.75,
+   "span_coverage": 0.667,
+   "spans": 9,
+   "context_fact_recall": 0.556,
+   "facts": 9,
+   "forms_recall": 0.889,
+   "context_tokens": 953
+  },
+  "typo": {
+   "n": 8,
+   "recall3": 0.375,
+   "recall5": 0.375,
+   "mrr": 0.25,
+   "mrr_doc": 0.312,
+   "span_coverage": 0.25,
+   "spans": 8,
+   "context_fact_recall": 0.5,
+   "facts": 8,
+   "forms_recall": 0.625,
+   "context_tokens": 943
+  }
+ },
+ "baseline_bm25": null,
+ "wins_ties_losses": null,
+ "seconds": 2.4
+}

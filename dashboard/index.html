@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run dashboard</title>
+<link rel="stylesheet" href="/static/base.css">
+<link rel="stylesheet" href="/dashboard/dashboard.css">
+</head>
+<body>
+<header class="bar">
+  <h1>Run dashboard</h1>
+  <nav class="bar-right"><a href="/">Chat</a></nav>
+</header>
+<main>
+  <section class="controls" aria-label="Choose runs">
+    <div>
+      <label for="run-select">Run</label>
+      <select id="run-select"></select>
+    </div>
+    <div>
+      <label for="base-select">Compared with</label>
+      <select id="base-select"></select>
+    </div>
+    <div class="controls-buttons">
+      <button type="button" id="reload">Reload runs</button>
+      <label class="check"><input type="checkbox" id="use-reference"> Reference runs</label>
+    </div>
+  </section>
+  <p id="status" class="muted" role="status"></p>
+  <nav id="toc" aria-label="Panels"></nav>
+  <div id="panels"></div>
+</main>
+
+<script src="/dashboard/lib.js"></script>
+<script src="/dashboard/dashboard.js"></script>
+<!-- The two starter tables, shipped. -->
+<script src="/dashboard/panels/run-history.js"></script>
+<script src="/dashboard/panels/headline.js"></script>
+<!-- Panels a learner writes, in the order of the labs. -->
+<script src="/dashboard/panels/run-tree.js"></script>
+<script src="/dashboard/panels/diff.js"></script>
+<script src="/dashboard/panels/recall-slices.js"></script>
+<script src="/dashboard/panels/context-tokens.js"></script>
+<script src="/dashboard/panels/correctness.js"></script>
+<script src="/dashboard/panels/must-pass.js"></script>
+<script src="/dashboard/panels/quality-cost.js"></script>
+<script src="/dashboard/panels/security.js"></script>
+<script src="/dashboard/panels/trace.js"></script>
+<script src="/dashboard/panels/failures.js"></script>
+<script src="/dashboard/panels/two-path.js"></script>
+<script>Dashboard.start();</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+name: ci
+
+# Runs with a deterministic stub model: no secrets and no network beyond installing packages.
+# The shared checker reads this exact file, on the exact commit, and checks the `tests` log for the test count.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+env:
+  DW_MODEL_PATH: stub
+  PYTHONUTF8: "1"
+
+jobs:
+  tests:
+    name: tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: python -m pip install fastapi uvicorn pyyaml pytest httpx
+      - name: Run the tests
+        run: python -m pytest -q -ra
+
+  harness-validate:
+    name: harness-validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install
+        run: python -m pip install fastapi uvicorn pyyaml pytest httpx
+      - name: Validate the run records
+        run: python -m harness validate
+      - name: No em or en dashes
+        run: python tools/check_dashes.py README.md app harness dashboard config challenges tests tools mock_api packs LAB-LOG.md REPORT.md

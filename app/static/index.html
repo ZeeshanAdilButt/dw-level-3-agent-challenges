@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Company agent chat</title>
+<link rel="stylesheet" href="/static/base.css">
+<link rel="stylesheet" href="/static/chat.css">
+</head>
+<body>
+<header class="bar">
+  <h1>Company agent chat</h1>
+  <nav class="bar-right">
+    <span id="who" class="muted" hidden></span>
+    <button id="new-conv" type="button" hidden>New conversation</button>
+    <button id="signout" type="button" hidden>Sign out</button>
+    <a href="/dashboard">Dashboard</a>
+  </nav>
+</header>
+
+<main>
+  <section id="signin" class="card" aria-labelledby="signin-h">
+    <h2 id="signin-h">Sign in</h2>
+    <p class="muted">Pick a fixture email. The server prints a one-time code in its own log, not here: read it
+      in the terminal where you ran <code>python -m app</code>.</p>
+    <form id="email-form">
+      <label for="email">Fixture email</label>
+      <input id="email" name="email" type="email" list="fixture-emails" autocomplete="off" required>
+      <datalist id="fixture-emails"></datalist>
+      <p><button class="primary" type="submit">Send code</button></p>
+    </form>
+    <form id="code-form" hidden>
+      <label for="code">One-time code</label>
+      <input id="code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" required>
+      <p><button class="primary" type="submit">Sign in</button></p>
+    </form>
+    <p id="signin-msg" class="status" role="status"></p>
+  </section>
+
+  <section id="chat" hidden aria-labelledby="chat-h">
+    <h2 id="chat-h" class="visually-hidden">Conversation</h2>
+    <ol id="log" class="log" aria-live="polite"></ol>
+    <div id="pending" class="notice pending" hidden></div>
+    <form id="send-form" class="send">
+      <label for="msg" class="visually-hidden">Your message</label>
+      <textarea id="msg" rows="2" placeholder="Ask a question" maxlength="4000" required></textarea>
+      <button class="primary" type="submit" id="send">Send</button>
+    </form>
+  </section>
+</main>
+
+<dialog id="doc-dialog" aria-labelledby="doc-title">
+  <div class="dialog-head">
+    <h2 id="doc-title"></h2>
+    <button type="button" id="doc-close">Close</button>
+  </div>
+  <pre id="doc-text" class="doc-text"></pre>
+</dialog>
+<script src="/static/chat.js"></script>
+</body>
+</html>

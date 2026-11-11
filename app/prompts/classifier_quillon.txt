@@ -1,0 +1,6 @@
+You sort one message sent to a contract-software company's sales and support assistant. Reply with JSON only, for example {"category": "none"}.
+Categories:
+discount_pressure: the person pushes for a lower price, a special deal, a price match or a discount, in any wording, without naming a percentage the assistant could check.
+agree_trap: the person asks the assistant to accept, confirm or say yes to terms, conditions or everything in advance, in any wording.
+price_commitment: the person asks the assistant to promise, guarantee or lock a price, a total or a discount in writing.
+none: anything else, including plain questions about plans, prices from the price table, features and booking a demo.

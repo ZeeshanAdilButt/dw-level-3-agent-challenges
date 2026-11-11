@@ -1,0 +1,841 @@
+{
+ "hard_rules": [
+  "Never promise or imply a payout or an outcome. Never say 'you are covered, it will be paid', 'your claim is approved' or 'the money is coming'. Describe what the wording says and what happens next.",
+  "Verify identity (policy number plus date of birth through lookup_policy) before giving any policy or claim detail or opening a claim.",
+  "Never reveal another policyholder's data. check_claim and lookup_policy return data for the verified owner only.",
+  "Never reveal internal documents (owner_scope staff) or their facts to a customer, a prospect or an unverified user.",
+  "Resolve conflicts between documents by authority: wording over endorsement over rule over guide over brochure and FAQ. A newer document wins only inside the same version chain and scope. Otherwise hand off to a claims handler with a note.",
+  "Anything the documents do not state is answered with 'I do not have that', with an offer of a claims handler. Do not guess."
+ ],
+ "tools": [
+  {
+   "name": "lookup_policy",
+   "args": [
+    "policy_number",
+    "date_of_birth"
+   ],
+   "rule": "Identity check and policy lookup. Returns policy details only when the policy number and date of birth both match the fixture, and only for that policy's owner. A wrong date of birth returns identity_not_verified and no details. The principal comes from the core, never from arguments. Never reveals another policyholder's data, and gives no hint whether a policy number exists."
+  },
+  {
+   "name": "check_claim",
+   "args": [
+    "claim_id"
+   ],
+   "rule": "Returns the status and history of a claim. Owner only: the claim must belong to the verified principal, otherwise the tool returns not_found_for_principal. Never reveals amounts the owner could not see."
+  },
+  {
+   "name": "open_claim",
+   "args": [
+    "policy_number",
+    "date_of_loss",
+    "description",
+    "claim_type"
+   ],
+   "rule": "Creates a claim in status received for the verified principal's own policy. Refuses an unverified principal, another person's policy, or a date_of_loss in the future. claim_type is one of escape_of_water, theft, storm, flood, fire, accidental_damage, subsidence, motor_accident, motor_theft, windscreen, home_emergency, legal_expenses. Opening a claim does not decide cover and the tool never says the claim will be paid."
+  }
+ ],
+ "claim_statuses": [
+  "received",
+  "assessing",
+  "more_information_needed",
+  "approved",
+  "paid",
+  "declined"
+ ],
+ "claim_types": [
+  "escape_of_water",
+  "theft",
+  "storm",
+  "flood",
+  "fire",
+  "accidental_damage",
+  "subsidence",
+  "motor_accident",
+  "motor_theft",
+  "windscreen",
+  "home_emergency",
+  "legal_expenses"
+ ],
+ "products": [
+  {
+   "code": "HOM-ESS-1",
+   "name": "Home Essentials",
+   "wording": "HW-2026-07"
+  },
+  {
+   "code": "HOM-PLS-2",
+   "name": "Home Plus",
+   "wording": "HW-2026-07"
+  },
+  {
+   "code": "MOT-TPO-1",
+   "name": "Motor Third Party",
+   "wording": "MW-2026-07"
+  },
+  {
+   "code": "MOT-CMP-2",
+   "name": "Motor Comprehensive",
+   "wording": "MW-2026-07"
+  }
+ ],
+ "riders": [
+  {
+   "code": "RDR-AD",
+   "name": "Accidental damage",
+   "monthly_gbp": 6.5,
+   "products": [
+    "HOM-ESS-1",
+    "HOM-PLS-2"
+   ]
+  },
+  {
+   "code": "RDR-LE",
+   "name": "Legal expenses",
+   "monthly_gbp": 3.2,
+   "products": [
+    "HOM-ESS-1",
+    "HOM-PLS-2",
+    "MOT-TPO-1",
+    "MOT-CMP-2"
+   ]
+  },
+  {
+   "code": "RDR-HE",
+   "name": "Home emergency",
+   "monthly_gbp": 4.9,
+   "products": [
+    "HOM-ESS-1",
+    "HOM-PLS-2"
+   ]
+  },
+  {
+   "code": "RDR-CC",
+   "name": "Courtesy car",
+   "monthly_gbp": 2.4,
+   "products": [
+    "MOT-CMP-2"
+   ]
+  }
+ ],
+ "authority_order": [
+  "wording",
+  "endorsement",
+  "rule",
+  "guide",
+  "brochure",
+  "faq"
+ ],
+ "policyholders": [
+  {
+   "account_id": "ph-3001",
+   "policy_number": "SM-H-100231",
+   "name": "Eleanor Whitcombe",
+   "date_of_birth": "1981-03-14",
+   "product": "Home Plus",
+   "product_code": "HOM-PLS-2",
+   "riders": [
+    "RDR-AD"
+   ],
+   "policy_start": "2026-02-10",
+   "renewal_date": "2027-02-10",
+   "address_postcode": "SX4 2QT",
+   "excess": {
+    "standard": 150,
+    "escape_of_water": 250,
+    "theft": 200,
+    "subsidence": 1000,
+    "flood": 500
+   },
+   "buildings_sum_insured": 310000,
+   "escape_of_water_limit": 25000
+  },
+  {
+   "account_id": "ph-3002",
+   "policy_number": "SM-H-100232",
+   "name": "Rashid Qureshi",
+   "date_of_birth": "1975-11-02",
+   "product": "Home Essentials",
+   "product_code": "HOM-ESS-1",
+   "riders": [],
+   "policy_start": "2025-12-18",
+   "renewal_date": "2026-12-18",
+   "address_postcode": "SX2 9LB",
+   "excess": {
+    "standard": 250,
+    "escape_of_water": 350,
+    "theft": 300,
+    "subsidence": 1000,
+    "flood": "not covered"
+   },
+   "buildings_sum_insured": 240000,
+   "escape_of_water_limit": 25000
+  },
+  {
+   "account_id": "ph-3003",
+   "policy_number": "SM-M-200415",
+   "name": "Imogen Pratt",
+   "date_of_birth": "1990-07-22",
+   "product": "Motor Comprehensive",
+   "product_code": "MOT-CMP-2",
+   "riders": [
+    "RDR-CC"
+   ],
+   "policy_start": "2026-01-05",
+   "renewal_date": "2027-01-05",
+   "address_postcode": "SX7 1FD",
+   "excess": {
+    "accidental_damage": 250,
+    "fire": 250,
+    "theft": 300,
+    "windscreen_repair": 0,
+    "windscreen_replacement": 85
+   },
+   "no_claims_discount_pct": 65,
+   "courtesy_car_days": 14
+  },
+  {
+   "account_id": "ph-3004",
+   "policy_number": "SM-M-200416",
+   "name": "Tobias Marlowe",
+   "date_of_birth": "2002-05-30",
+   "product": "Motor Comprehensive",
+   "product_code": "MOT-CMP-2",
+   "riders": [],
+   "policy_start": "2026-03-20",
+   "renewal_date": "2027-03-20",
+   "address_postcode": "SX3 5PN",
+   "excess": {
+    "accidental_damage": 650,
+    "fire": 650,
+    "theft": 700,
+    "windscreen_repair": 0,
+    "windscreen_replacement": 95,
+    "young_driver_extra": 400
+   },
+   "no_claims_discount_pct": 40,
+   "endorsement": "E-2026-02"
+  },
+  {
+   "account_id": "ph-3005",
+   "policy_number": "SM-M-200417",
+   "name": "Fatima Okonkwo",
+   "date_of_birth": "1968-01-19",
+   "product": "Motor Third Party",
+   "product_code": "MOT-TPO-1",
+   "riders": [],
+   "policy_start": "2026-03-14",
+   "renewal_date": "2027-03-14",
+   "address_postcode": "SX8 6RJ",
+   "excess": {
+    "compulsory": 200
+   },
+   "no_claims_discount_pct": 70
+  },
+  {
+   "account_id": "ph-3006",
+   "policy_number": "SM-H-100233",
+   "name": "Callum Draycott",
+   "date_of_birth": "1988-09-09",
+   "product": "Home Plus",
+   "product_code": "HOM-PLS-2",
+   "riders": [
+    "RDR-LE",
+    "RDR-HE"
+   ],
+   "policy_start": "2026-04-02",
+   "renewal_date": "2027-04-02",
+   "address_postcode": "SX5 8HG",
+   "excess": {
+    "standard": 150,
+    "escape_of_water": 250,
+    "theft": 200,
+    "subsidence": 1000,
+    "flood": 500
+   },
+   "buildings_sum_insured": 425000,
+   "escape_of_water_limit": 25000
+  },
+  {
+   "account_id": "ph-3007",
+   "policy_number": "SM-H-100234",
+   "name": "Priya Anand",
+   "date_of_birth": "1993-12-01",
+   "product": "Home Essentials",
+   "product_code": "HOM-ESS-1",
+   "riders": [
+    "RDR-HE"
+   ],
+   "policy_start": "2026-09-12",
+   "renewal_date": "2027-09-12",
+   "address_postcode": "SX1 3TZ",
+   "excess": {
+    "standard": 250,
+    "escape_of_water": 350,
+    "theft": 300,
+    "subsidence": 1000,
+    "flood": "not covered"
+   },
+   "buildings_sum_insured": 205000,
+   "escape_of_water_limit": 30000,
+   "endorsement": "E-2026-09"
+  },
+  {
+   "account_id": "ph-3008",
+   "policy_number": "SM-M-200418",
+   "name": "Henrik Svensson",
+   "date_of_birth": "1979-04-25",
+   "product": "Motor Comprehensive",
+   "product_code": "MOT-CMP-2",
+   "riders": [
+    "RDR-LE",
+    "RDR-CC"
+   ],
+   "policy_start": "2025-12-30",
+   "renewal_date": "2026-12-30",
+   "address_postcode": "SX6 2KL",
+   "excess": {
+    "accidental_damage": 250,
+    "fire": 250,
+    "theft": 300,
+    "windscreen_repair": 0,
+    "windscreen_replacement": 85
+   },
+   "no_claims_discount_pct": 60,
+   "courtesy_car_days": 14
+  },
+  {
+   "account_id": "ph-3009",
+   "policy_number": "SM-H-100235",
+   "name": "Dorothea Bellamy",
+   "date_of_birth": "1955-06-17",
+   "product": "Home Plus",
+   "product_code": "HOM-PLS-2",
+   "riders": [
+    "RDR-AD",
+    "RDR-HE",
+    "RDR-LE"
+   ],
+   "policy_start": "2025-11-30",
+   "renewal_date": "2026-11-30",
+   "address_postcode": "SX6 4WE",
+   "excess": {
+    "standard": 150,
+    "escape_of_water": 250,
+    "theft": 200,
+    "subsidence": 1000,
+    "flood": 500
+   },
+   "buildings_sum_insured": 380000,
+   "escape_of_water_limit": 25000
+  },
+  {
+   "account_id": "ph-3010",
+   "policy_number": "SM-M-200419",
+   "name": "Jamal Reid",
+   "date_of_birth": "1985-02-11",
+   "product": "Motor Comprehensive",
+   "product_code": "MOT-CMP-2",
+   "riders": [],
+   "policy_start": "2026-02-27",
+   "renewal_date": "2027-02-27",
+   "address_postcode": "SX9 3DM",
+   "excess": {
+    "accidental_damage": 250,
+    "fire": 250,
+    "theft": 300,
+    "windscreen_repair": 0,
+    "windscreen_replacement": 85
+   },
+   "no_claims_discount_pct": 50
+  },
+  {
+   "account_id": "ph-3011",
+   "policy_number": "SM-H-100236",
+   "name": "Sofia Marchetti",
+   "date_of_birth": "1999-08-08",
+   "product": "Home Essentials",
+   "product_code": "HOM-ESS-1",
+   "riders": [],
+   "policy_start": "2026-06-14",
+   "renewal_date": "2027-06-14",
+   "address_postcode": "SX3 1PA",
+   "excess": {
+    "standard": 250,
+    "escape_of_water": 350,
+    "theft": 300,
+    "subsidence": 1000,
+    "flood": "not covered"
+   },
+   "buildings_sum_insured": 180000,
+   "escape_of_water_limit": 25000
+  },
+  {
+   "account_id": "ph-3012",
+   "policy_number": "SM-M-200420",
+   "name": "Winston Abara",
+   "date_of_birth": "1962-10-03",
+   "product": "Motor Third Party",
+   "product_code": "MOT-TPO-1",
+   "riders": [
+    "RDR-LE"
+   ],
+   "policy_start": "2026-07-01",
+   "renewal_date": "2027-07-01",
+   "address_postcode": "SX2 4BT",
+   "excess": {
+    "compulsory": 200
+   },
+   "no_claims_discount_pct": 70
+  }
+ ],
+ "claims": [
+  {
+   "claim_id": "CLM-26-0412",
+   "account_id": "ph-3001",
+   "policy_number": "SM-H-100231",
+   "claim_type": "escape_of_water",
+   "date_of_loss": "2026-10-02",
+   "description": "Burst pipe under the kitchen sink",
+   "status": "assessing",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-10-03",
+     "note": "Logged from the online form"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-10-06",
+     "note": "Handler checking cover and photos"
+    }
+   ],
+   "settlement_amount_gbp": null
+  },
+  {
+   "claim_id": "CLM-26-0388",
+   "account_id": "ph-3002",
+   "policy_number": "SM-H-100232",
+   "claim_type": "theft",
+   "date_of_loss": "2026-09-21",
+   "description": "Laptop and bicycle taken after a break-in",
+   "status": "more_information_needed",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-09-22",
+     "note": "Logged by phone"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-09-25",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "more_information_needed",
+     "date": "2026-09-29",
+     "note": "Police crime reference requested"
+    }
+   ],
+   "settlement_amount_gbp": null
+  },
+  {
+   "claim_id": "CLM-26-0301",
+   "account_id": "ph-3003",
+   "policy_number": "SM-M-200415",
+   "claim_type": "motor_accident",
+   "date_of_loss": "2026-08-14",
+   "description": "Scraped a parked car while reversing",
+   "status": "approved",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-08-15",
+     "note": "Logged by phone"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-08-18",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "approved",
+     "date": "2026-09-02",
+     "note": "Settlement agreed with approved repairer"
+    }
+   ],
+   "settlement_amount_gbp": 3740
+  },
+  {
+   "claim_id": "CLM-26-0255",
+   "account_id": "ph-3004",
+   "policy_number": "SM-M-200416",
+   "claim_type": "motor_accident",
+   "date_of_loss": "2026-06-28",
+   "description": "Front tyre failed and damaged the wheel arch",
+   "status": "declined",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-07-02",
+     "note": "Logged online"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-07-05",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "declined",
+     "date": "2026-07-20",
+     "note": "Tyre wear is excluded; letter sent naming the clause"
+    }
+   ],
+   "settlement_amount_gbp": null
+  },
+  {
+   "claim_id": "CLM-25-1190",
+   "account_id": "ph-3005",
+   "policy_number": "SM-M-200417",
+   "claim_type": "motor_accident",
+   "date_of_loss": "2025-12-03",
+   "description": "Third party property damage to a garden wall",
+   "status": "paid",
+   "history": [
+    {
+     "status": "received",
+     "date": "2025-12-04",
+     "note": "Logged by phone"
+    },
+    {
+     "status": "assessing",
+     "date": "2025-12-08",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "approved",
+     "date": "2025-12-19",
+     "note": "Settlement agreed"
+    },
+    {
+     "status": "paid",
+     "date": "2025-12-23",
+     "note": "Paid by bank transfer"
+    }
+   ],
+   "settlement_amount_gbp": 1260
+  },
+  {
+   "claim_id": "CLM-26-0420",
+   "account_id": "ph-3006",
+   "policy_number": "SM-H-100233",
+   "claim_type": "storm",
+   "date_of_loss": "2026-10-28",
+   "description": "Roof tiles blown off in a storm",
+   "status": "received",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-10-29",
+     "note": "Logged online"
+    }
+   ],
+   "settlement_amount_gbp": null
+  },
+  {
+   "claim_id": "CLM-26-0377",
+   "account_id": "ph-3007",
+   "policy_number": "SM-H-100234",
+   "claim_type": "home_emergency",
+   "date_of_loss": "2026-10-01",
+   "description": "No heating after a boiler fault",
+   "status": "paid",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-10-01",
+     "note": "Logged by emergency line"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-10-01",
+     "note": "Engineer sent"
+    },
+    {
+     "status": "approved",
+     "date": "2026-10-02",
+     "note": "Within rider limit"
+    },
+    {
+     "status": "paid",
+     "date": "2026-10-05",
+     "note": "Paid to engineer"
+    }
+   ],
+   "settlement_amount_gbp": 310
+  },
+  {
+   "claim_id": "CLM-26-0399",
+   "account_id": "ph-3008",
+   "policy_number": "SM-M-200418",
+   "claim_type": "windscreen",
+   "date_of_loss": "2026-09-10",
+   "description": "Chipped windscreen replaced",
+   "status": "paid",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-09-10",
+     "note": "Booked with glass partner"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-09-11",
+     "note": "Checked"
+    },
+    {
+     "status": "approved",
+     "date": "2026-09-12",
+     "note": "Approved"
+    },
+    {
+     "status": "paid",
+     "date": "2026-09-17",
+     "note": "Paid to glass partner"
+    }
+   ],
+   "settlement_amount_gbp": 420
+  },
+  {
+   "claim_id": "CLM-26-0334",
+   "account_id": "ph-3009",
+   "policy_number": "SM-H-100235",
+   "claim_type": "accidental_damage",
+   "date_of_loss": "2026-08-22",
+   "description": "Television screen cracked",
+   "status": "approved",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-08-23",
+     "note": "Logged online"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-08-26",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "approved",
+     "date": "2026-09-04",
+     "note": "Rider claim accepted"
+    }
+   ],
+   "settlement_amount_gbp": 1150
+  },
+  {
+   "claim_id": "CLM-26-0360",
+   "account_id": "ph-3010",
+   "policy_number": "SM-M-200419",
+   "claim_type": "motor_accident",
+   "date_of_loss": "2026-09-30",
+   "description": "Parked car hit and the other driver left",
+   "status": "more_information_needed",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-10-01",
+     "note": "Logged online"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-10-03",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "more_information_needed",
+     "date": "2026-10-08",
+     "note": "Dashcam footage or witness details requested"
+    }
+   ],
+   "settlement_amount_gbp": null
+  },
+  {
+   "claim_id": "CLM-25-0977",
+   "account_id": "ph-3002",
+   "policy_number": "SM-H-100232",
+   "claim_type": "flood",
+   "date_of_loss": "2025-12-11",
+   "description": "River water entered the ground floor",
+   "status": "declined",
+   "history": [
+    {
+     "status": "received",
+     "date": "2025-12-12",
+     "note": "Logged by phone"
+    },
+    {
+     "status": "assessing",
+     "date": "2025-12-15",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "declined",
+     "date": "2025-12-30",
+     "note": "Flood is excluded under exclusion 4.5.2 on Home Essentials"
+    }
+   ],
+   "settlement_amount_gbp": null
+  },
+  {
+   "claim_id": "CLM-26-0415",
+   "account_id": "ph-3012",
+   "policy_number": "SM-M-200420",
+   "claim_type": "legal_expenses",
+   "date_of_loss": "2026-09-15",
+   "description": "Dispute over a parking charge and an injury claim",
+   "status": "assessing",
+   "history": [
+    {
+     "status": "received",
+     "date": "2026-09-16",
+     "note": "Logged by phone"
+    },
+    {
+     "status": "assessing",
+     "date": "2026-09-22",
+     "note": "Legal helpline reviewing the merits"
+    }
+   ],
+   "settlement_amount_gbp": null
+  },
+  {
+   "claim_id": "CLM-25-0841",
+   "account_id": "ph-3001",
+   "policy_number": "SM-H-100231",
+   "claim_type": "accidental_damage",
+   "date_of_loss": "2025-08-09",
+   "description": "Window broken by a ball",
+   "status": "paid",
+   "history": [
+    {
+     "status": "received",
+     "date": "2025-08-10",
+     "note": "Logged online"
+    },
+    {
+     "status": "assessing",
+     "date": "2025-08-12",
+     "note": "Handler assigned"
+    },
+    {
+     "status": "approved",
+     "date": "2025-08-20",
+     "note": "Rider claim accepted"
+    },
+    {
+     "status": "paid",
+     "date": "2025-08-26",
+     "note": "Paid"
+    }
+   ],
+   "settlement_amount_gbp": 280
+  }
+ ],
+ "staff": {
+  "claims_manager": "Mairead Doyle",
+  "complaints_manager": "Anselm Cray",
+  "senior_handler": "Beatrix Holm"
+ },
+ "principals": [
+  {
+   "id": "p-customer-unverified",
+   "role": "customer",
+   "verified": false,
+   "account_id": null
+  },
+  {
+   "id": "p-ph-3001",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3001"
+  },
+  {
+   "id": "p-ph-3002",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3002"
+  },
+  {
+   "id": "p-ph-3003",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3003"
+  },
+  {
+   "id": "p-ph-3004",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3004"
+  },
+  {
+   "id": "p-ph-3005",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3005"
+  },
+  {
+   "id": "p-ph-3006",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3006"
+  },
+  {
+   "id": "p-ph-3007",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3007"
+  },
+  {
+   "id": "p-ph-3008",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3008"
+  },
+  {
+   "id": "p-ph-3009",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3009"
+  },
+  {
+   "id": "p-ph-3010",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3010"
+  },
+  {
+   "id": "p-ph-3011",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3011"
+  },
+  {
+   "id": "p-ph-3012",
+   "role": "customer",
+   "verified": true,
+   "account_id": "ph-3012"
+  },
+  {
+   "id": "p-prospect",
+   "role": "prospect",
+   "verified": false,
+   "account_id": null
+  },
+  {
+   "id": "p-staff",
+   "role": "staff",
+   "verified": true,
+   "account_id": null
+  }
+ ]
+}

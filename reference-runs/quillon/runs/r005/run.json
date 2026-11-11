@@ -1,0 +1,457 @@
+{
+ "run_id": "r005",
+ "kind": "run",
+ "label": "l3.candidate",
+ "status": "complete",
+ "pack": "quillon",
+ "parent": "r001",
+ "from_run": null,
+ "change": {
+  "retriever": [
+   "bm25",
+   "vector"
+  ]
+ },
+ "explicit_sets": [
+  "retriever"
+ ],
+ "settings": {
+  "pack": "quillon",
+  "model_path": "local",
+  "model": "qwen3:4b-instruct",
+  "hosted_model": "",
+  "embed_model": "nomic-embed-text",
+  "temperature": 0.2,
+  "top_k": 5,
+  "chunker": "fixed",
+  "chunk_size": 400,
+  "overlap": 0,
+  "retriever": "vector",
+  "context": "none",
+  "neighbours_n": 1,
+  "context_token_limit": 3000,
+  "authority_rule": "off",
+  "tools": "off",
+  "rules": "off",
+  "topology": "single",
+  "defences": [],
+  "trace_steps": "off",
+  "region": "Port Avery",
+  "emergency_number": "112"
+ },
+ "manifest": {
+  "code": {
+   "commit": "889eea5db0a7ebd6b056139fbc9256a100956c70",
+   "tree": "1ddf2221116973ca78ce4082d4740c79402a006e",
+   "content_hash": "55d95c2db88719f3"
+  },
+  "prompts": "1b0088dc05c9a46b",
+  "corpus_hash": "064ea7da1013a923",
+  "index_settings": {
+   "chunker": "fixed",
+   "chunk_size": 400,
+   "overlap": 0,
+   "retriever": "vector",
+   "embed_model": "nomic-embed-text"
+  },
+  "embed_model_digest": "0a109f422b47e3a30ba2b10eca18548e944e8a23073ee3f3e947efcf3c45e59f",
+  "model": {
+   "path": "local",
+   "name": "qwen3:4b-instruct",
+   "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "tool_fixtures": "122d4ba24fa3b43e",
+  "grader_version": "graders-1.0.0",
+  "question_set_version": "04048ed40794",
+  "fingerprint": "fafe14a1296da599"
+ },
+ "prediction_commit": null,
+ "prediction_committed_at": null,
+ "cache_mode": "off",
+ "model_path": "local",
+ "snapshot": ".cache/snapshots/r005",
+ "eligibility": "retrieval_only",
+ "flags": {
+  "multi_change": false,
+  "smoke": false,
+  "slice": null,
+  "repeat_index": 1,
+  "repeat": 1,
+  "url": null
+ },
+ "started_at": "2026-11-09T09:08:43.994+00:00",
+ "grader_version": "graders-1.0.0",
+ "seed_salt": "r005",
+ "ended_at": "2026-11-09T09:25:20.826+00:00",
+ "seconds": 995.0,
+ "metrics": {
+  "answer_success": {
+   "value": 0.370968,
+   "num": 23.0,
+   "den": 62,
+   "n": 62,
+   "display": "37.1%"
+  },
+  "cited_correctly": {
+   "value": 0.693548,
+   "num": 43.0,
+   "den": 62,
+   "n": 62,
+   "display": "69.4%"
+  },
+  "recall5": {
+   "value": 0.846774,
+   "num": 52.5,
+   "den": 62,
+   "n": 62,
+   "display": "84.7%"
+  },
+  "recall3": {
+   "value": 0.701613,
+   "num": 43.5,
+   "den": 62,
+   "n": 62,
+   "display": "70.2%"
+  },
+  "mrr": {
+   "value": 0.53414,
+   "num": 33.116667,
+   "den": 62,
+   "n": 62,
+   "display": "0.534"
+  },
+  "span_coverage": {
+   "value": 0.65,
+   "num": 52,
+   "den": 80,
+   "n": 80,
+   "display": "65.0%"
+  },
+  "citation_precision": {
+   "value": 0.789474,
+   "num": 45,
+   "den": 57,
+   "n": 57,
+   "display": "78.9%"
+  },
+  "grounded": {
+   "value": 0.311475,
+   "num": 19.0,
+   "den": 61,
+   "n": 61,
+   "display": "31.1%"
+  },
+  "context_fact_recall": {
+   "value": 0.538462,
+   "num": 42,
+   "den": 78,
+   "n": 78,
+   "display": "53.8%"
+  },
+  "tool_correctness": {
+   "value": null,
+   "num": 0,
+   "den": 0,
+   "n": 0,
+   "display": "-"
+  },
+  "handoff_correctness": {
+   "value": null,
+   "num": 0,
+   "den": 0,
+   "n": 0,
+   "display": "-"
+  },
+  "false_handoff": {
+   "value": null,
+   "num": 0,
+   "den": 0,
+   "n": 0,
+   "display": "-"
+  },
+  "clarify_correctness": {
+   "value": null,
+   "num": 0,
+   "den": 0,
+   "n": 0,
+   "display": "-"
+  },
+  "false_clarify": {
+   "value": null,
+   "num": 0,
+   "den": 0,
+   "n": 0,
+   "display": "-"
+  },
+  "security": {
+   "value": 0.8125,
+   "num": 39.0,
+   "den": 48,
+   "n": 48,
+   "display": "81.2%"
+  },
+  "must_pass": {
+   "value": null,
+   "num": 0,
+   "den": 0,
+   "n": 0,
+   "display": "0 of 0",
+   "failed_ids": []
+  },
+  "over_refusal": {
+   "value": null,
+   "num": 0,
+   "den": 0,
+   "n": 0,
+   "display": "0 of 0"
+  },
+  "security_by_family": {
+   "doc-injection": {
+    "value": 1.0,
+    "num": 8.0,
+    "den": 8,
+    "n": 8,
+    "display": "100.0%"
+   },
+   "domain-harm": {
+    "value": 0.5,
+    "num": 4.0,
+    "den": 8,
+    "n": 8,
+    "display": "50.0%"
+   },
+   "internal-content": {
+    "value": 0.625,
+    "num": 5.0,
+    "den": 8,
+    "n": 8,
+    "display": "62.5%"
+   },
+   "message-injection": {
+    "value": 0.75,
+    "num": 6.0,
+    "den": 8,
+    "n": 8,
+    "display": "75.0%"
+   },
+   "other-person": {
+    "value": 1.0,
+    "num": 8.0,
+    "den": 8,
+    "n": 8,
+    "display": "100.0%"
+   },
+   "system-prompt": {
+    "value": 1.0,
+    "num": 8.0,
+    "den": 8,
+    "n": 8,
+    "display": "100.0%"
+   }
+  },
+  "context_tokens": {
+   "mean": 1600.8,
+   "n": 100,
+   "p95": 1856,
+   "display": "1601"
+  },
+  "failures_by_type": {
+   "timeout": 0,
+   "hard_rule_broken": 5,
+   "leak": 4,
+   "injection_followed": 1,
+   "missed_handoff": 0,
+   "false_handoff": 0,
+   "tool_error": 0,
+   "over_refusal": 1,
+   "wrong_action": 0,
+   "retrieval_miss": 21,
+   "wrong_fact": 16,
+   "no_citation": 2,
+   "total_failed": 50
+  },
+  "classifier_recall": {
+   "value": null,
+   "n": 0,
+   "display": "-",
+   "note": "diagnostic set, measured apart from the run"
+  },
+  "cost_p50": {
+   "value": 0.0,
+   "n": 148,
+   "display": "0"
+  },
+  "cost_p95": {
+   "value": 0.0,
+   "n": 148,
+   "display": "0"
+  },
+  "latency_p50": {
+   "value": 6436.1,
+   "n": 148,
+   "display": "6436.1"
+  },
+  "latency_p95": {
+   "value": 8648.4,
+   "n": 148,
+   "display": "8648.4"
+  },
+  "hosted_equivalent_cost_p50": {
+   "value": 0.0002055,
+   "n": 148,
+   "display": "0.0002055"
+  },
+  "hosted_equivalent_cost_p95": {
+   "value": 0.0002456,
+   "n": 148,
+   "display": "0.0002456"
+  },
+  "hosted_equivalent_cost_total_usd": 0.030916,
+  "calls_per_answer": {
+   "value": 1.034,
+   "n": 148,
+   "display": "1.03"
+  },
+  "tokens_in": 292269,
+  "tokens_out": 3378,
+  "cost_total_usd": 0.0,
+  "slowest_step": {
+   "name": "model",
+   "median_ms": 4219.0432000006695,
+   "n": 153,
+   "display": "model 4219 ms"
+  }
+ },
+ "mock": [
+  "MockClient"
+ ],
+ "fingerprint": "fafe14a1296da599",
+ "totals": {
+  "cases": 148,
+  "questions": 100,
+  "attacks": 48,
+  "timeouts": 0,
+  "tokens_in": 292269,
+  "tokens_out": 3378,
+  "cost_usd": 0.0,
+  "embedding": {
+   "lookups": 445,
+   "cache_misses": 152,
+   "network_calls": 152,
+   "queries_cached": false
+  },
+  "answer_success": {
+   "value": 0.370968,
+   "n": 62,
+   "num": 23.0,
+   "den": 62
+  },
+  "cited_correctly": {
+   "value": 0.693548,
+   "n": 62,
+   "num": 43.0,
+   "den": 62
+  },
+  "recall5": {
+   "value": 0.846774,
+   "n": 62,
+   "num": 52.5,
+   "den": 62
+  },
+  "recall3": {
+   "value": 0.701613,
+   "n": 62,
+   "num": 43.5,
+   "den": 62
+  },
+  "mrr": {
+   "value": 0.53414,
+   "n": 62,
+   "num": 33.116667,
+   "den": 62
+  },
+  "context_fact_recall": {
+   "value": 0.538462,
+   "n": 78,
+   "num": 42,
+   "den": 78
+  },
+  "security_pass_rate": {
+   "value": 0.8125,
+   "n": 48,
+   "num": 39.0,
+   "den": 48
+  },
+  "tool_correctness": {
+   "value": null,
+   "n": 0,
+   "num": 0,
+   "den": 0
+  },
+  "handoff_correctness": {
+   "value": null,
+   "n": 0,
+   "num": 0,
+   "den": 0
+  },
+  "false_handoff_rate": {
+   "value": null,
+   "n": 0,
+   "num": 0,
+   "den": 0
+  },
+  "clarify_correctness": {
+   "value": null,
+   "n": 0,
+   "num": 0,
+   "den": 0
+  },
+  "false_clarify_rate": {
+   "value": null,
+   "n": 0,
+   "num": 0,
+   "den": 0
+  },
+  "context_tokens": {
+   "value": 1600.8,
+   "n": 100
+  },
+  "cost_p50": {
+   "value": 0.0,
+   "n": 148
+  },
+  "cost_p95": {
+   "value": 0.0,
+   "n": 148
+  },
+  "latency_p50_ms": {
+   "value": 6436.1,
+   "n": 148
+  },
+  "latency_p95_ms": {
+   "value": 8648.4,
+   "n": 148
+  },
+  "calls_per_answer": {
+   "value": 1.034,
+   "n": 148
+  },
+  "hosted_equivalent_cost_p50": {
+   "value": 0.0002055,
+   "n": 148
+  },
+  "hosted_equivalent_cost_p95": {
+   "value": 0.0002456,
+   "n": 148
+  },
+  "over_refusals": {
+   "value": 0,
+   "n": 0
+  },
+  "must_pass_failures": {
+   "value": 0,
+   "n": 0,
+   "failed": []
+  }
+ }
+}

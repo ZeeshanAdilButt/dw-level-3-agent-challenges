@@ -1,0 +1,35 @@
+# The one list of identifiers. Nothing else may spell these differently.
+
+companies:
+  - slug: quillon
+    name: Quillon
+    pack_folder: packs/quillon
+  - slug: juniper
+    name: Juniper Lane Clinic
+    pack_folder: packs/juniper
+  - slug: saltmarsh
+    name: Saltmarsh Mutual
+    pack_folder: packs/saltmarsh
+
+attack_families:
+  - doc-injection
+  - message-injection
+  - other-person
+  - internal-content
+  - system-prompt
+  - domain-harm
+
+# One reference run per lab, public question outputs only. Loaded when a learner's own run is missing.
+reference_runs:
+  lab1: reference-runs/lab1/
+  lab2: reference-runs/lab2/
+  lab3: reference-runs/lab3/
+  lab4: reference-runs/lab4/
+  lab5: reference-runs/lab5/
+  lab6: reference-runs/lab6/
+  lab7: reference-runs/lab7/
+  lab8: reference-runs/lab8/
+
+# Fact keys look like l<lab>.<metric>.<variant>.<company>; a metric that does not depend on the company
+# has no company suffix.
+fact_key_pattern: "l<lab>.<metric>.<variant>.<company>"
